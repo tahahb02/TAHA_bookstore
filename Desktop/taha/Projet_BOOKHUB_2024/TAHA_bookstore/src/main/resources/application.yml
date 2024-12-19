@@ -1,0 +1,4 @@
+server:
+  port: 9090
+  app:
+    version: 1.0.00

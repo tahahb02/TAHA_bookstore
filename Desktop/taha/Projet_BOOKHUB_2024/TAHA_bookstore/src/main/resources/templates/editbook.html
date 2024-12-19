@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.com" >
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--Bootstrap navbar-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+
+
+  <title>BookHub</title>
+  <style>
+    body{
+      color: black;
+
+    }
+
+  </style>
+</head>
+
+<body>
+<!-- nav barr jdida -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TAHA BOOK STORE</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<!--
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="Available_book">Available Book</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="book_register">Add Book</a>
+        </li>
+-->
+
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
+
+<div class="text-center"><h3>Edit Book Here</h3></div>
+
+<div class="container-fluid">
+  <form th:action="@{/save}" method="post"  th:object="${book}"
+        style="max-width: 500px ; margin: 0 auto;">
+    <input type="hidden" name="id" th:value="${book.book_id}" th:field="*{book_id}">
+    <div class="border border-secondary rounded p-3">
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Name</label>
+        <div class="col-sm-8">
+          <input type="text" name="name" class="form-control" th:value="${book.name}" th:field="*{name}">
+        </div>
+      </div>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Auther</label>
+        <div class="col-sm-8">
+          <input type="text" name="auther" class="form-control" th:value="${book.auther}" th:field="*{auther}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Price</label>
+        <div class="col-sm-8">
+          <input type="text" name="price" class="form-control" required minlength="2" maxlength="45" th:value="${book.price}" th:field="*{price}">
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Description</label>
+        <div class="col-sm-8">
+          <input type="text" name="description" class="form-control" required minlength="2" maxlength="300" th:value="${book.description}" th:field="*{description}">
+        </div>
+      </div>
+      <br>
+
+      <section id="sec2Car" class="col-md-4 mt-3">
+        <div class="mb-sm-0">
+          <label class="form-label" for="side_View">Book picture</label>
+          <input class="form-control" id="side_View" type="file" name="imageURL" th:field="*{imageURL}">
+          <span class="control-error"></span>
+        </div>
+      </section>
+
+
+      <br>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary m-2" >Save</button>
+        <button type="button" class="btn btn-secondary m-2" onclick="cancelform()" >Cancel</button>
+
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function cancelform(){
+    window.location ="[[@{/Available_book}]]";
+  }
+</script>
+
+<!--java script navbar-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
